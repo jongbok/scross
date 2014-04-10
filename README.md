@@ -27,26 +27,31 @@ S-Cross(Cross-Site Request Security)
  
 ###명세서
  * 환경설정
-| 항목     | 설명              | 예시                                                          |
-|----------|-------------------|---------------------------------------------------------------|
-|secId     |검증 기준 식별자   |portal_GW                                                      |
-|pattern   |임의의 문자열      |from$C[48-497]por$C[2001-3040]tal$C[56-4006]to$C[5329-10253]GW |
-|key       |대칭형 암호화 key  |a9f44db99281ac5391093840d1e21326                               |
-|expire    |만료시간(second)   |60                                                             |
+
+| 항목     | 설명              | 예시                                                           |
+|----------|-------------------|----------------------------------------------------------------|
+| secId    | 검증 기준 식별자  | portal_GW                                                      |
+| pattern  | 임의의 문자열     | from$C[48-497]por$C[2001-3040]tal$C[56-4006]to$C[5329-10253]GW |
+| key      | 대칭형 암호화 key | a9f44db99281ac5391093840d1e21326                               |
+| expire    |만료시간(second)  | 60                                                             |
+
  * Tocken
+
 | 항목    | 설명                       | 예시                        |
 |---------|----------------------------|-----------------------------|
 |secId    |검증 기준 식별자            |portal_GW                    |
 |body     |임의의 문자열               |from¢porࢦtalߒtoᗁGW           |
 |time     |토큰생성시간(milli seconds) |1396598029896|               |
  * Tocken 생성
-attachment:tocken_generate.png
+
+![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/tocken_generate.png)
  * Tocken 검증
   * 만료여부 검증
     * Tocken Time < Current Time – Expiration Time = Expired Tocken
     * Tocken Time > Current Time + Expiration Time = Expired Tocken
     * Cross-Site A,B간 시스템시간의 차이가 만료시간을 초과할 경우 100% 검증실패됨.
-attachment:tocken_expire_1.png
+
+![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/tocken_expire_1.png)
   * 위변조여부 검증
     * 검증용 문자열 생성 = Tocken Time + Pattern
     * 검증용 문자열과 Tocken Body비교검증
@@ -62,7 +67,8 @@ attachment:tocken_expire_1.png
  * lib 폴더 하위의 jar파일을 Cross-Site A,B의 Classpath에 배포한다.
  * 만료시간을 너무 크게 설정하고 동시접속자가 많을경우 OOM(Out Of Memory)를 발생시킬 수 있으니 주의필요.
  * pattern의 치환문자열의 범위는 1-65535 사이의 숫자이다.
-attachment:config_generate.png
+
+![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/config_generate.png)
 
 ###사용법
  * 인증대상 Site JSP(Source)
