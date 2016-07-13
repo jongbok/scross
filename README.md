@@ -44,14 +44,14 @@ S-Cross(Cross-Site Request Security)
 |time     |토큰생성시간(milli seconds) |1396598029896|               |
  * Tocken 생성
 
-![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/tocken_generate.png)
+![alt tag](https://raw.githubusercontent.com/jongbok/scross/master/docs/images/config_generate.png)
  * Tocken 검증
   * 만료여부 검증
     * Tocken Time < Current Time – Expiration Time = Expired Tocken
     * Tocken Time > Current Time + Expiration Time = Expired Tocken
     * Cross-Site A,B간 시스템시간의 차이가 만료시간을 초과할 경우 100% 검증실패됨.
 
-![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/tocken_expire_1.png)
+![alt tag](https://raw.githubusercontent.com/jongbok/scross/master/docs/images/tocken_expire_1.png)
   * 위변조여부 검증
     * 검증용 문자열 생성 = Tocken Time + Pattern
     * 검증용 문자열과 Tocken Body비교검증
@@ -68,7 +68,7 @@ S-Cross(Cross-Site Request Security)
  * 만료시간을 너무 크게 설정하고 동시접속자가 많을경우 OOM(Out Of Memory)를 발생시킬 수 있으니 주의필요.
  * pattern의 치환문자열의 범위는 1-65535 사이의 숫자이다.
 
-![alt tag](http://dev.naver.com/wiki/s-cross/pds/FrontPage/config_generate.png)
+![alt tag](https://raw.githubusercontent.com/jongbok/scross/master/docs/images/config_generate.png)
 
 ###사용법
  * 인증대상 Site JSP(Source)
@@ -110,9 +110,3 @@ S-Cross(Cross-Site Request Security)
 	//TODO 주문서 처리
 %>
 ```
-
-###관련정보 링크
- * http://blog.naver.com/asdkf20 [Blog]
- * http://dev.naver.com/projects/rclog [RCLog4j Runtime Configuration Log4j]
- * http://dev.naver.com/projects/noti-j [noti-J Message Push]
- * http://dev.naver.com/projects/wlog [Wlog Web based Fast Log Viewer]
